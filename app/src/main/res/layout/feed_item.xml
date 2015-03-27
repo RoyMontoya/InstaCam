@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView    xmlns:android="http://schemas.android.com/apk/res/android"
+                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_marginLeft="@dimen/card_margin"
+              android:layout_marginRight="@dimen/card_margin"
+              android:layout_marginBottom="@dimen/card_margin"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:id="@+id/feed_user_avatar"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:src="@drawable/woods"
+            />
+    <TextView
+        android:id="@+id/feed_user_name"
+        android:layout_marginLeft="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="test"
+        android:textColor="@color/primary_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <com.example.amado.material.RatioLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ratio="0.75">
+    <ImageView
+        android:id="@+id/feed_item_photo"
+        android:src="@drawable/woods"
+        android:scaleType="centerCrop"
+        android:rotation="90"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+        </com.example.amado.material.RatioLayout>
+    <TextView
+        android:id="@+id/feed_item_caption"
+        android:text="test"
+        android:padding="@dimen/vertical_small_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
