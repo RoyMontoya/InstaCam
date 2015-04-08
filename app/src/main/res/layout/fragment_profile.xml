@@ -4,10 +4,73 @@
              android:layout_height="match_parent"
              tools:context="com.example.amado.instacam.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="168dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/avatar_profile"
+            android:paddingLeft="24dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center"
+            android:layout_weight="30"
+
+
+         />
+
+     <LinearLayout
+         android:paddingTop="48dp"
+         android:orientation="vertical"
+         android:layout_weight="70"
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent">
+
+         <TextView
+             android:id="@+id/profile_name"
+             android:text="name"
+            android:textColor="@color/text_color"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+             android:layout_gravity="center_horizontal"/>
+         <TextView
+             android:id="@+id/profile_birthday"
+             android:textColor="@color/text_color"
+             android:text="birthday"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+             android:layout_gravity="center_horizontal"/>
+
+
+
+     </LinearLayout>
+    </LinearLayout>
+
+
+    <GridView
+
+        android:id="@+id/grid_collection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:columnWidth="90dp"
+        android:numColumns="3"
+        android:verticalSpacing="4dp"
+        android:horizontalSpacing="4dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center">
 
+        </GridView>
+
+
+</LinearLayout>
 </FrameLayout>

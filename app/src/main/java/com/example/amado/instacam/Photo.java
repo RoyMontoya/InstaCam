@@ -13,6 +13,15 @@ import java.util.UUID;
 public class Photo implements Serializable{
     private UUID mID;
     private static final File sDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+    private User mUser;
+
+    public User getUser() {
+        return mUser;
+    }
+
+    public void setUser(User user) {
+        mUser = user;
+    }
 
     private String mCaption;
 

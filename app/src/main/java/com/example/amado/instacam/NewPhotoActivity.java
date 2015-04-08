@@ -7,47 +7,34 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
 
 
-public class NewPhotoActivity extends ActionBarActivity {
+public class NewPhotoActivity extends ActionBarActivity implements NewPhotoFragment.Contract {
     public static final int CAMARA = 666;
     private Photo mPhoto;
-    private ImageView mPreview;
-    private EditText mCaption;
     public static final String PHOTO_EXTRA= "PHOTO_EXTRA";
+    private NewPhotoFragment mNewPhotoFragment;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_photo);
-        mPreview = (ImageView)findViewById(R.id.photo_preview);
-        mCaption = (EditText)findViewById(R.id.new_photo_caption);
-        Button saveButton = (Button)findViewById(R.id.save_new_photo);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            mPhoto.setCaption(mCaption.getText().toString());
-             Intent i = new Intent();
-             i.putExtra(PHOTO_EXTRA, mPhoto);
-             setResult(RESULT_OK, i);
-                finish();
-            }
-        });
-        LaunchCamera();
+        mNewPhotoFragment = (NewPhotoFragment)getFragmentManager().findFragmentById(R.id.new_photo_fragment_container);
+        if(mNewPhotoFragment == null) {
+            mNewPhotoFragment = new NewPhotoFragment();
+            getFragmentManager().beginTransaction().add(R.id.new_photo_fragment_container, mNewPhotoFragment)
+                    .commit();
+        }
+
     }
 
-    private void LaunchCamera(){
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        mPhoto = new Photo();
-        i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mPhoto.getFile()));
-        startActivityForResult(i,CAMARA);
-    }
+
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -74,7 +61,25 @@ public class NewPhotoActivity extends ActionBarActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode== CAMARA && resultCode == RESULT_OK){
-            Picasso.with(this).load(mPhoto.getFile()).into(mPreview);
+            mNewPhotoFragment.updatePhoto(mPhoto);
         }
+    }
+
+
+    @Override
+    public void launchCamara() {
+        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        mPhoto = new Photo();
+        i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mPhoto.getFile()));
+        startActivityForResult(i,CAMARA);
+    }
+
+    @Override
+    public void finishedPhoto(Photo photo) {
+
+        Intent i = new Intent();
+        i.putExtra(PHOTO_EXTRA, photo);
+        setResult(RESULT_OK, i);
+        finish();
     }
 }

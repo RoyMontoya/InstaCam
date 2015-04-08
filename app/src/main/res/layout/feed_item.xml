@@ -47,7 +47,7 @@
         android:id="@+id/feed_item_photo"
         android:src="@drawable/woods"
         android:scaleType="centerCrop"
-        android:rotation="90"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
         </com.example.amado.material.RatioLayout>

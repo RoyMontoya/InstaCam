@@ -8,4 +8,7 @@
     <string name="title_activity_new_photo">NewPhotoActivity</string>
     <string name="new_caption_hint">Please add caption...</string>
     <string name="save">Save</string>
+    <string name="fb_app_id">854161331322492</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="user_info">User Information:</string>
 </resources>
